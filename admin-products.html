@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Products</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <h1>🛒 Барааны удирдлага</h1>
+      <div class="actions">
+        <a class="link-btn" href="admin.html">Захиалга</a>
+        <a class="link-btn secondary" href="shop.html">Shop</a>
+        <a class="link-btn secondary" href="index.html">Welcome</a>
+      </div>
+    </header>
+
+    <form class="form-card" onsubmit="saveProduct(event)">
+      <input type="hidden" id="productId" />
+      <input type="text" id="name" placeholder="Барааны нэр" required />
+      <input type="number" id="price" placeholder="Үнэ" required />
+      <input type="text" id="image" placeholder="Зургийн зам (ж: images/shoe.jpg)" required />
+      <input type="text" id="category" placeholder="Ангилал" />
+      <input type="text" id="description" placeholder="Тайлбар" />
+      <button type="submit">Хадгалах</button>
+    </form>
+
+    <div id="productAdminList" class="grid" style="margin-top: 24px;"></div>
+  </div>
+
+  <script src="js/admin-products.js"></script>
+</body>
+</html>

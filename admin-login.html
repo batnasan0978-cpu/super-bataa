@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="welcome-body">
+  <div class="animated-bg">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="welcome-nav">
+    <div class="brand">
+      <div class="brand-logo">A</div>
+      <div>
+        <h2>Admin Panel</h2>
+        <p>Secure Access</p>
+      </div>
+    </div>
+
+    <nav class="welcome-nav-links">
+      <a href="index.html">Welcome</a>
+      <a href="shop.html">Shop</a>
+      <a href="user-login.html">User Login</a>
+    </nav>
+  </header>
+
+  <main class="auth-page">
+    <form class="form-card premium-card" onsubmit="login(event)">
+      <p class="welcome-kicker">ADMIN ACCESS</p>
+      <h1>Админ нэвтрэх</h1>
+      <p class="welcome-subtitle">Зөвхөн админ эрхтэй хэрэглэгч нэвтэрнэ.</p>
+
+      <input id="username" type="text" placeholder="Админ нэр" required />
+      <input id="password" type="password" placeholder="Нууц үг" required />
+
+      <button type="submit">Admin Login</button>
+
+      <div class="actions">
+        <a class="link-btn secondary full" href="index.html">Welcome</a>
+        <a class="link-btn ghost-btn full" href="shop.html">Shop</a>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    async function login(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.token) {
+        localStorage.setItem("token", data.token);
+        window.location.href = "admin.html";
+      } else {
+        alert(data.error || "Нэвтрэхэд алдаа гарлаа");
+      }
+    }
+  </script>
+</body>
+</html>

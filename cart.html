@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page small-page">
+    <header class="topbar">
+      <h1>🛒 Таны сагс</h1>
+      <div class="actions">
+        <a class="link-btn secondary" href="shop.html">Shop</a>
+        <a class="link-btn secondary" href="index.html">Welcome</a>
+      </div>
+    </header>
+
+    <div id="cart" class="list-box"></div>
+    <p id="total" class="total"></p>
+
+    <div class="actions">
+      <button onclick="clearCart()">Сагс цэвэрлэх</button>
+      <a class="link-btn" href="checkout.html">Захиалга хийх</a>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    displayCart();
+  </script>
+</body>
+</html>

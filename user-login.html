@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="welcome-body">
+  <div class="animated-bg">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="welcome-nav">
+    <div class="brand">
+      <div class="brand-logo">O</div>
+      <div>
+        <h2>Online Shop</h2>
+        <p>User Access</p>
+      </div>
+    </div>
+
+    <nav class="welcome-nav-links">
+      <a href="index.html">Welcome</a>
+      <a href="shop.html">Shop</a>
+      <a href="register.html">Create Account</a>
+    </nav>
+  </header>
+
+  <main class="auth-page">
+    <form class="form-card premium-card" onsubmit="loginUser(event)">
+      <p class="welcome-kicker">LOGIN</p>
+      <h1>Нэвтрэх</h1>
+      <p class="welcome-subtitle">Аккаунтаараа нэвтэрч дэлгүүрээ ашиглаарай.</p>
+
+      <input id="email" type="email" placeholder="И-мэйл" required />
+      <input id="password" type="password" placeholder="Нууц үг" required />
+
+      <button type="submit">Login</button>
+
+      <div class="actions">
+        <a class="link-btn secondary full" href="register.html">Create Account</a>
+        <a class="link-btn ghost-btn full" href="shop.html">Shop руу орох</a>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    async function loginUser(event) {
+      event.preventDefault();
+
+      const payload = {
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+      };
+
+      const res = await fetch("/api/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem("userToken", data.token);
+        localStorage.setItem("userInfo", JSON.stringify(data.user));
+        alert("Амжилттай нэвтэрлээ");
+        window.location.href = "shop.html";
+      } else {
+        alert(data.error || "Нэвтрэхэд алдаа гарлаа");
+      }
+    }
+  </script>
+</body>
+</html>

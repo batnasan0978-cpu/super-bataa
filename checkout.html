@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page small-page">
+    <header class="topbar">
+      <h1>📦 Захиалга хийх</h1>
+      <div class="actions">
+        <a class="link-btn secondary" href="cart.html">Сагс</a>
+        <a class="link-btn secondary" href="shop.html">Shop</a>
+      </div>
+    </header>
+
+    <div id="orderItems" class="list-box"></div>
+    <p id="orderTotal" class="total"></p>
+
+    <form class="form-card" onsubmit="submitOrder(event)">
+      <input id="name" type="text" placeholder="Нэр" required />
+      <input id="phone" type="text" placeholder="Утас" required />
+      <input id="address" type="text" placeholder="Хаяг" required />
+      <button type="submit">Захиалга илгээх</button>
+    </form>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    displayOrder();
+  </script>
+</body>
+</html>

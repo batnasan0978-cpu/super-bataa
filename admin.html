@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <h1>📊 Админ самбар</h1>
+      <div class="actions">
+        <a class="link-btn" href="admin-products.html">Бараа</a>
+        <a class="link-btn secondary" href="shop.html">Shop</a>
+        <a class="link-btn secondary" href="index.html">Welcome</a>
+        <button onclick="logout()">Гарах</button>
+      </div>
+    </header>
+
+    <section class="grid" id="stats">
+      <div class="product">
+        <h2>Нийт захиалга</h2>
+        <p id="totalOrders" class="price">0</p>
+      </div>
+    </section>
+
+    <div id="orders" class="grid"></div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
